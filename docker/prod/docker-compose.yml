@@ -1,0 +1,23 @@
+services:
+  backend-example:
+    container_name: backend-example-prod
+    build:
+      context: ../../
+      dockerfile: ./docker/prod/Dockerfile
+    env_file:
+      - ../../env/.env.prod
+    expose:
+      - '8000'
+    depends_on:
+      - db
+
+  db:
+    container_name: db-prod
+    image: postgres:13-alpine
+    env_file:
+      - ../../env/.env.prod
+    volumes:
+      - backdata:/var/lib/postgresql/data
+
+volumes:
+  backdata:

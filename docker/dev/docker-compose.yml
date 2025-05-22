@@ -1,0 +1,26 @@
+services:
+  backend-example:
+    container_name: backend-example-dev
+    build:
+      context: ../../
+      dockerfile: ./docker/dev/Dockerfile
+    # volumes:
+    # - ./:/app
+    # - /app/node_modules
+    env_file:
+      - ../../env/.env.dev
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+
+  db:
+    container_name: db-dev
+    image: postgres:13-alpine
+    env_file:
+      - ../../env/.env.dev
+    volumes:
+      - backdata_dev:/var/lib/postgresql/data
+
+volumes:
+  backdata_dev:

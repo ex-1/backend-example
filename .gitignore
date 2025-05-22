@@ -1,0 +1,8 @@
+/dist
+/node_modules
+/build
+/generated
+
+.vscode
+
+.env

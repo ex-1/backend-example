@@ -21,7 +21,7 @@
 		"noFallthroughCasesInSwitch": false,
 
 		"baseUrl": "./",
-		"paths": { "@/*": ["./src/*"] },
+		"paths": { "@/*": ["./src/*"], "orm/*": ["./orm/*"] },
 		"rootDir": "./",
 		"outDir": "./dist"
 	}

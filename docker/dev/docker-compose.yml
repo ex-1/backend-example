@@ -4,9 +4,8 @@ services:
     build:
       context: ../../
       dockerfile: ./docker/dev/Dockerfile
-    # volumes:
-    # - ./:/app
-    # - /app/node_modules
+    volumes:
+      - ../../:/app:rw
     env_file:
       - ../../env/.env.dev
     ports:
@@ -16,11 +15,13 @@ services:
 
   db:
     container_name: db-dev
-    image: postgres:13-alpine
+    image: postgres:14-alpine
     env_file:
       - ../../env/.env.dev
     volumes:
-      - backdata_dev:/var/lib/postgresql/data
+      - backdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
 
 volumes:
-  backdata_dev:
+  backdata:

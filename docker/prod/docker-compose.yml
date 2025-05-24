@@ -13,9 +13,11 @@ services:
 
   db:
     container_name: db-prod
-    image: postgres:13-alpine
+    image: postgres:14-alpine
     env_file:
       - ../../env/.env.prod
+    expose:
+      - '5432'
     volumes:
       - backdata:/var/lib/postgresql/data
 

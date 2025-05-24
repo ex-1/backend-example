@@ -17,17 +17,13 @@ docker-down:
 docker-update:
 	docker compose -f $(CONFIG_PATH) up --build
 
-# DB
-
-# Up db
-db-up: 
+db-up:
 	docker compose -f $(CONFIG_PATH) up db
 
-# Up db sliently
-db-ups: 
-	docker compose -f $(CONFIG_PATH) up db -d 
+db-upd: 
+	docker compose -f $(CONFIG_PATH) up db -d
 
-db-down: 
+db-down:
 	docker compose -f $(CONFIG_PATH) down db
 
-.PHONY: docker-up docker-build docker-down docker-build-up
+.PHONY: docker-up docker-build docker-down docker-build-up db-up db-upd db-down
